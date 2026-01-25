@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CampusStay — Student Accommodation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="#/" id="logo">CampusStay</a>
+      </div>
+
+      <nav id="main-nav" class= "nav">
+        <a href="#/" class="nav-link" data-route>Home</a>
+        <a href="#/listings" class="nav-link" data-route>Listings</a>
+        <a href="#/contact" class="nav-link" data-route>Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button id="favorites-btn" class="icon-btn" title="Favorites">❤ <span id="fav-count" class="badge"></span></button>
+        <button id="mobile-menu-btn" class="icon-btn" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT (all dynamic) -->
+  <main id="app" class="container">
+    <!-- content will be injected by app.js -->
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    
+    <div class="footer-brand">
+      <h3>CampusStay</h3>
+      <p>Helping students find safe and affordable accommodation.</p>
+    </div>
+
+    <div class="footer-actions">
+      <a href="tel:+263774795957" aria-label="Call us">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+
+      <a href="https://wa.me/263774795957" target="_blank" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <a href="mailto:campusstay@gmail.com" aria-label="Email us">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+
+    <div class="footer-copy">
+      © 2026 CampusStay
+    </div>
+
+  </div>
+</footer>
+
+  <!-- HTML TEMPLATES (hidden) -->
+  <template id="home-template">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Find the perfect student home</h1>
+        <p>Search student rooms, shared houses and apartments near campus.</p>
+
+        <div class="search-bar">
+          <input type="text" id="hero-search" placeholder="Search by type, e.g., 'Apartment' or 'Room'">
+          <button id="hero-search-btn">Search</button>
+        </div>
+      </div>
+      <div class="hero-image">
+
+      </div>
+    </section>
+
+    <section class="featured">
+      <h2>Featured Listings</h2>
+      <div id="featured-list" class="grid"></div>
+    </section>
+  </template>
+
+  <template id="listings-template">
+    <section class="listings-page sidebar-collapsed">
+
+      <button id="sidebar-toggle" class="sidebar-toggle">
+        ☰ Filters
+      </button>
+      
+      <div class="listings-sidebar">
+      
+        <h3>Search & Filters</h3>
+
+        <label>Location
+          <input type="text" id="filter-location" placeholder="e.g., Main Campus">
+        </label>
+
+        <label>Type
+          <select id="filter-type">
+            <option value="">Any</option>
+            <option value="room">Room</option>
+            <option value="apartment">Apartment</option>
+            <option value="shared">Shared House</option>
+          </select>
+        </label>
+
+        <label>Price (max)
+          <input type="number" id="filter-price" placeholder="e.g., 300">
+        </label>
+
+        <label>Distance from campus (km)
+          <select id="filter-distance">
+            <option value="">Any</option>
+            <option value="1">≤ 1 km</option>
+            <option value="3">≤ 3 km</option>
+            <option value="5">≤ 5 km</option>
+            <option value="10">≤ 10 km</option>
+          </select>
+        </label>
+
+        <label>Rooms
+          <select id="filter-rooms">
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3+">3+</option>
+          </select>
+        </label>
+
+        <div class="filter-actions">
+          <button id="apply-filters">Apply</button>
+          <button id="reset-filters" class="muted">Reset</button>
+        </div>
+      </div>
+
+      <div class="listings-main">
+        <div class="listings-controls">
+          <input type="text" id="quick-search" placeholder="Search title or description...">
+          <select id="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: low → high</option>
+            <option value="price-desc">Price: high → low</option>
+            <option value="distance-asc">Distance: near → far</option>
+          </select>
+        </div>
+
+        <div id="listings-grid" class="grid"></div>
+      </div>
+    </section>
+
+    <button id="floating-filters-btn" class="floating-filters-btn">
+      ☰ Filters
+    </button>
+
+  </template>
+
+  <template id="detail-template">
+    <section class="detail-view">
+      <button id="back-btn" class="muted">← Back to listings</button>
+
+      <div class="detail-grid">
+        <div class="gallery" id="detail-gallery"></div>
+
+        <div class="detail-info">
+          <h2 id="detail-title"></h2>
+          <div class="meta">
+            <span id="detail-price" class="price"></span>
+            <span id="detail-distance"></span>
+            <span id="detail-rooms"></span>
+            <span id="detail-type"></span>
+          </div>
+
+          <p id="detail-description"></p>
+
+          <div class="detail-actions">
+            <button id="fav-toggle" class="primary">❤ Save</button>
+            <button id="contact-owner" class="secondary">Contact Owner</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="contact-template">
+    <section class="contact-page">
+      <h2>Contact Us</h2>
+
+      <div class="contact-wrapper">
+
+        <div class="contact-card contact-info">
+          <h3>Get in touch</h3>
+          <p>Having a query? You want to book with us? Hit any of the platforms below and get assistance.</p>
+
+          <a href="mailto:campusstay@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>campusstay@gmail.com</span>
+          </a>
+
+          <a href="https://wa.me/263774795957?text=Hello%20I%20would%20like%20to%20inquire" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>+263774795957</span>
+          </a>
+
+          <a href="https://facebook.com/CampusStay" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+            <span>CampusStay</span>
+          </a>
+        </div>
+
+        <div class="contact-card contact-form">
+          <h3>Leave us a message.</h3>
+
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Contact Phone</label>
+              <input type="tel" id="phone" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="5" required></textarea>
+            </div>
+
+            <button class="contact-btn" type="submit">Send Message</button>
+
+          </form>
+        </div>
+
+      </div>  
+    </section>
+  </template>
+
+  <!-- include JS -->
+  <script src="app.js"></script>
+</body>
+</html>
