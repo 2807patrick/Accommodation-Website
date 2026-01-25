@@ -1,16 +1,1 @@
-Complete front-end system for a student accommodation listing website using Html, CSS, JavaScript.
-It includes:
-1. Clean homepage displaying featured accommodation listings
-2. Listings Page showing all available houses and rooms, with a sidebar that allows students to search and filter with their preferences.
-3. A detailed view page for each listing (images, price, location and description).
-4. A contact page that allows students to send messages through the web or use an email.
 
-App.js - CampusStay front-end
-Single-file SPA using hash routing (#/ , #/listings, #/listing/:id, #/contact)
-
-Features implemented:
-1. Data array of listings (images, price, distance, rooms, type)
-2. Render home (featured), listings with search and filters, detail view
-3. Save favorites in localStorage
-4. Search, filter, sort functionality
-5. Mobile menu toggle
