@@ -1,5 +1,5 @@
 # Accommodation-Website
-A website that allows students to browse and find available listings of rooms and apartments near campus.
+A website that allows students to browse, search and find available listings of rooms and apartments near campus.
 
 Complete front-end system for a student accommodation listing website using Html, CSS, JavaScript.
 It includes:
