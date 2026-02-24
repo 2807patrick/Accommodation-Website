@@ -9,8 +9,8 @@ const LISTINGS = [
     distance: 0.6, // km
     description: 'A bright single room in a quiet shared house. Close to campus and transit, utilities included.',
     images: [
-      'images/room1-a.jpg',
-      'images/house1.jpg',
+      'room1-a.jpg',
+      'house1.jpg',
     ],
     rooms: 1,
     type: 'room',
@@ -744,3 +744,4 @@ function debounce(fn, wait=200) {
  - For more features: add pagination, map integration, authentication for owners and students, and server-side favorites storage.
  - Images used are Unsplash URLs (placeholder). Replace with proper hosted images or backend image endpoints.
 */
+
